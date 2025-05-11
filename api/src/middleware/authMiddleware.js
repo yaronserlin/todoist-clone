@@ -7,8 +7,10 @@
  * @module middleware/authMiddleware
  */
 
-import jwt from 'jsonwebtoken';
-import User from '../models/User.js';
+// import jwt from 'jsonwebtoken';
+// import User from '../models/User.js';
+const jwt = require("jsonwebtoken");
+const User = require("../models/User");
 
 /**
  * Protect routes by requiring a valid Bearer token in the Authorization header.
@@ -18,7 +20,7 @@ import User from '../models/User.js';
  * @param {import("express").Response} res - Express response object
  * @param {import("express").NextFunction} next - Next middleware function
  */
-export const protect = async (req, res, next) => {
+exports.protect = async (req, res, next) => {
     // Check for Bearer token in Authorization header
     const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
